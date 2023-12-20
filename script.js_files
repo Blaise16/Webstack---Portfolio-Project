@@ -1,0 +1,29 @@
+<script>
+    function addTask() {
+        var taskInput = document.getElementById("taskInput");
+        var taskList = document.getElementById("taskList");
+
+        if (taskInput.value.trim() !== "") {
+            var li = document.createElement("li");
+            var span = document.createElement("span");
+            var deleteBtn = document.createElement("button");
+
+            span.appendChild(document.createTextNode(taskInput.value));
+            li.appendChild(span);
+
+            deleteBtn.appendChild(document.createTextNode("Delete"));
+            deleteBtn.className = "delete-btn";
+            deleteBtn.onclick = function () {
+                li.remove();
+            };
+            li.appendChild(deleteBtn);
+
+            li.onclick = function () {
+                li.classList.toggle("task-done");
+            };
+
+            taskList.appendChild(li);
+            taskInput.value = "";
+        }
+    }
+</script>
